@@ -7,17 +7,11 @@ var windSpeed = $("#wind-speed");
 var uvIndex = $("#uv-index");
 var icon = $("#icon");
 
-
-// Setting up url and api key
-
-
-
-
-//Testing API connection
+//Setting up API connection
 
 function handleAPI(){
     var city = $("#input").val();
-
+    // Setting up url and api key
     var APIKey = "f4299bef35c7fb3410eeb230e66758d1";
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
 
