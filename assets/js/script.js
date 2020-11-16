@@ -29,7 +29,7 @@ function handleAPI(){
         var iconURL = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
         var weatherIcon = icon.attr("src", iconURL);
         console.log(iconURL);
-        cityDate.text( response.name + " " + response.date + " " + weatherIcon);
+        cityDate.text( response.name + " " + response.date);
         temp.text( "Temperature: " + response.main.temp);
         humidity.text( "Humidity: " + response.main.humidity);
         windSpeed.text( "Wind Speed: " + response.wind.speed);
