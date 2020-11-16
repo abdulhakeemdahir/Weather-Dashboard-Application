@@ -1,22 +1,27 @@
 // Setting up variables
-var city = $("#input").val();
+var submitButton = $("#submit");
 
 // Setting up url and api key
 
-var APIKey = "f4299bef35c7fb3410eeb230e66758d1";
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
 
 
-// Testing API connection
 
-// $.ajax({
-//     url: queryURL,
-//     method: "GET"
-//   }).then(function(response){
-//     console.log(response);
-//     console.log(userInput);
+//Testing API connection
 
-// });
+function handleAPI(){
+    var city = $("#input").val();
+
+    var APIKey = "f4299bef35c7fb3410eeb230e66758d1";
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response){
+        console.log(response);
+        console.log(city);
+
+});
+}
 
 // Append List of Searches
 
@@ -25,3 +30,8 @@ var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&a
 // Get One API Data for UV Index
 
 // Get 5 Day Forcast Data
+
+submitButton.on("click", function (event) {
+    event.preventDefault();
+    handleAPI();
+  });
