@@ -1,22 +1,22 @@
 // Setting up variables
-var userInput = $("#input").val();
+var city = $("#input").val();
 
 // Setting up url and api key
 
 var APIKey = "f4299bef35c7fb3410eeb230e66758d1";
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=seattle&appid=" + APIKey;
+var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
 
 
 // Testing API connection
 
-$.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function(response){
-    console.log(response);
-    console.log(userInput);
+// $.ajax({
+//     url: queryURL,
+//     method: "GET"
+//   }).then(function(response){
+//     console.log(response);
+//     console.log(userInput);
 
-});
+// });
 
 // Append List of Searches
 
