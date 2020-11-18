@@ -2,7 +2,7 @@
 // Setting up variables
 
 // Main Weather Section
-var contentContainer = $("#content2");
+var contentContainer = $("#content2-container");
 var submitButton = $("#submit");
 var cityDate = $("#city-date");
 var temp = $("#temp");
@@ -31,12 +31,14 @@ function uvIndexHandler (lon, lat){
         uvIndex.text( "UV-Index: " + response2.current.uvi);
         for (var i = 0; i < 5; i++){
             //5 Day Foercast Section
-            var fiveDayContainer = $('<div id="fiveDayWeather" class="card col-12 col-sm-3 p-2 bg-primary text-light mr-1 row">');
+            var content2 = $('<div id="content2" class="mr-1">');
+            var fiveDayContainer = $('<div id="fiveDayWeather" class="card p-2 bg-primary text-light col-sm row">');
             var fiveCityDate = $('<p id="five-city-date"">');
             var fiveCityIcon = $('<img id="icon2" src="" class="col-9"></img>');
             var fiveCityTemp = $('<p id="five-city-temp"">');
             var fiveCityHumidity = $('<p id="five-city-humidity"">');
-            contentContainer.append(fiveDayContainer);
+            contentContainer.append(content2);
+            content2.append(fiveDayContainer);
             fiveDayContainer.append(fiveCityDate, fiveCityIcon, fiveCityTemp, fiveCityHumidity);
             // Setting up Responses
             fiveCityDate.text("Date: " + response2.daily[i].dt);
