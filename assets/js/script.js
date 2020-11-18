@@ -31,20 +31,25 @@ function uvIndexHandler (lon, lat){
         uvIndex.text( "UV-Index: " + response2.current.uvi);
         for (var i = 0; i < 5; i++){
             //5 Day Foercast Section
-            var fiveDayContainer = $('<div id="fiveDayWeather" class="card col-sm-2 p-2 bg-primary text-light">');
+            var fiveDayContainer = $('<div id="fiveDayWeather" class="card col-12 col-sm-3 p-2 bg-primary text-light mr-1 row">');
             var fiveCityDate = $('<p id="five-city-date"">');
-            var fiveCityIcon = $('<p id="five-city-icon"">');
+            var fiveCityIcon = $('<img id="icon2" src="" class="col-9"></img>');
             var fiveCityTemp = $('<p id="five-city-temp"">');
             var fiveCityHumidity = $('<p id="five-city-humidity"">');
             contentContainer.append(fiveDayContainer);
             fiveDayContainer.append(fiveCityDate, fiveCityIcon, fiveCityTemp, fiveCityHumidity);
-
+            // Setting up Responses
             fiveCityDate.text("Date: " + response2.daily[i].dt);
-            fiveCityIcon.text(response2.daily[i].weather.icon);
             fiveCityTemp.text("Temp: " + response2.daily[i].temp.day);
             fiveCityHumidity.text("Humidity: " + response2.daily[i].humidity);
+
+            //Setting up Icons
+            var iconCode2 = response2.daily[i].weather[0].icon;
+            console.log(iconCode2);
+            var iconURL2 = "http://openweathermap.org/img/wn/" + iconCode2 + "@2x.png";
+            fiveCityIcon.attr("src", iconURL2);
         }
-        console.log(response2);
+        console.log(fiveCityIcon);
     });
 }
 
