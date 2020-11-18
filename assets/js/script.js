@@ -2,7 +2,7 @@
 // Setting up variables
 
 // Main Weather Section
-var contentContainer = $("#content");
+var contentContainer = $("#content2");
 var submitButton = $("#submit");
 var cityDate = $("#city-date");
 var temp = $("#temp");
@@ -11,16 +11,11 @@ var windSpeed = $("#wind-speed");
 var uvIndex = $("#uv-index");
 var icon = $("#icon");
 
-//5 Day Foercast Section
-var fiveDayContainer = $('<div id="fiveDayWeather" class="card col-sm-2 p-2 bg-primary text-light">');
-var fiveCityDate = $('<p id="five-city-date"">');
-var fiveCityIcon = $('<p id="five-city-icon"">');
-var fiveCityTemp = $('<p id="five-city-temp"">');
-var fiveCityHumidity = $('<p id="five-city-humidity"">');
+
 
 // Append 5 Day Section
-contentContainer.append(fiveDayContainer);
-fiveDayContainer.append(fiveCityDate, fiveCityIcon, fiveCityTemp, fiveCityHumidity);
+
+
 
 // One Call API
 
@@ -34,6 +29,21 @@ function uvIndexHandler (lon, lat){
         method: "GET"
     }).then(function(response2){
         uvIndex.text( "UV-Index: " + response2.current.uvi);
+        for (var i = 0; i < 5; i++){
+            //5 Day Foercast Section
+            var fiveDayContainer = $('<div id="fiveDayWeather" class="card col-sm-2 p-2 bg-primary text-light">');
+            var fiveCityDate = $('<p id="five-city-date"">');
+            var fiveCityIcon = $('<p id="five-city-icon"">');
+            var fiveCityTemp = $('<p id="five-city-temp"">');
+            var fiveCityHumidity = $('<p id="five-city-humidity"">');
+            contentContainer.append(fiveDayContainer);
+            fiveDayContainer.append(fiveCityDate, fiveCityIcon, fiveCityTemp, fiveCityHumidity);
+
+            fiveCityDate.text("Date: " + response2.daily[i].dt);
+            fiveCityIcon.text(response2.daily[i].weather.icon);
+            fiveCityTemp.text("Temp: " + response2.daily[i].temp.day);
+            fiveCityHumidity.text("Humidity: " + response2.daily[i].humidity);
+        }
         console.log(response2);
     });
 }
