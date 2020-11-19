@@ -28,16 +28,14 @@ function uvIndexHandler (lon, lat){
         contentContainer.empty();
         for (var i = 0; i < 5; i++){
             //5 Day Foercast Section
-            var content2 = $('<div id="content2" class="mr-1">');
-            var fiveDayContainer = $('<div id="fiveDayWeather" class="card p-2 bg-primary text-light col-sm row">');
+            var fiveDayContainer = $('<div id="fiveDayWeather" class="card p-2 bg-primary text-light col-sm row m-1">');
             var fiveCityDate = $('<p id="five-city-date">');
             var fiveCityIcon = $('<img id="icon2" src="" class="col-9"></img>');
             var fiveCityTemp = $('<p id="five-city-temp">');
             var fiveCityHumidity = $('<p id="five-city-humidity">');
 
             // Append 5 Day Section
-            contentContainer.append(content2);
-            content2.append(fiveDayContainer);
+            contentContainer.append(fiveDayContainer);
             fiveDayContainer.append(fiveCityDate, fiveCityIcon, fiveCityTemp, fiveCityHumidity);
             
             // Setting up Responses
