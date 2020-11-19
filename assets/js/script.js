@@ -1,7 +1,7 @@
 'use strict';
 // Setting up moment
 var today = moment();
-var todaysDate = today.format("dddd, MMM DD, YYYYY");
+var todaysDate = today.format("dddd, MMM DD");
 // Main Weather Section
 
 var contentContainer = $("#content2-container");
@@ -24,7 +24,17 @@ function uvIndexHandler (lon, lat){
         url: queryURL,
         method: "GET"
     }).then(function(response2){
-        uvIndex.text( "UV-Index: " + response2.current.uvi);
+        var uvIndexNumber = response2.current.uvi;
+        uvIndex.text( "UV-Index: " + uvIndexNumber);
+        if (uvIndexNumber <= 2){
+            $(uvIndex).addClass("good");
+        }
+        else if (uvIndexNumber <= 6){
+            $(uvIndex).addClass("moderate");
+        }
+        else {
+            $(uvIndex).addClass("severe");
+        }
         //Empty Container before each submit
         contentContainer.empty();
         for (var i = 1; i < 6; i++){
@@ -42,7 +52,7 @@ function uvIndexHandler (lon, lat){
             // Setting up Date
 
             var newDate = moment().add(i, 'days');
-            var nextDate = newDate.format("dddd, MMM DD, YYYYY");
+            var nextDate = newDate.format("dddd, MMM DD");
 
             // Setting up Responses
             fiveCityDate.text("Date: " + nextDate);
@@ -91,7 +101,7 @@ function handleAPI(){
         var iconURL = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
         var weatherIcon = icon.attr("src", iconURL);
         console.log(response);
-        cityDate.text( response.name + " " + todaysDate);
+        cityDate.text( response.name + ", " + todaysDate);
         temp.text( "Temperature: " + response.main.temp + " F");
         humidity.text( "Humidity: " + response.main.humidity + "%");
         windSpeed.text( "Wind Speed: " + response.wind.speed + " MPH");
