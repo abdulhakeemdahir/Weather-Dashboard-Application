@@ -13,6 +13,16 @@ var windSpeed = $("#wind-speed");
 var uvIndex = $("#uv-index");
 var icon = $("#icon");
 
+// Setup Initialized State
+
+var searchedCityContainer = $("#list-group");
+var savedCitiesJSON = localStorage.getItem("cities");
+var savedCities = savedCitiesJSON ? JSON.parse(savedCitiesJSON): [];
+
+for (var i = 0; i < savedCities.length; i++){
+    searchedButton(savedCities[i]);
+}
+
 
 // One Call API
 
@@ -70,16 +80,17 @@ function uvIndexHandler (lon, lat){
 // Append List of Searches
 
 function searchHandler(city){
-    var inputCity = city;
-    var savedCity = localStorage.setItem("cities", inputCity);
-    console.log(inputCity);
-    var searchedCityContainer = $("#list-group");
-    var searchedCity = $('<button id="list-item" class="list-group-item"></button>');
-    searchedCityContainer.append(searchedCity);
-    var getCity = localStorage.getItem("cities", "inputCity");
-    searchedCity.text(city);
+    savedCities.push(city);
+    localStorage.setItem("cities", JSON.stringify(savedCities));
+    searchedButton(city);
 }
 
+function searchedButton (city){
+    var searchedCity = $('<button class="list-group-item"></button>');
+    searchedCityContainer.append(searchedCity);
+    searchedCity.text(city);
+    searchedCity.data("city", city);
+}
 // Get Searched Items
 
 //Setting up API handler
@@ -116,6 +127,11 @@ function handleAPI(){
 
 });
 }
+
+ searchedCityContainer.on("click", ".list-group-item", function (event){
+     event.preventDefault();
+    $(this).data("city");
+ })
 
 
 // Submit Event 
