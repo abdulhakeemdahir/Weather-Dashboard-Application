@@ -5,7 +5,7 @@ UW Code Bootcamp HW 6
 ## Table of Contents
 
 - [Developer Comment](#developer-comment)
-- [Employer Request](#employer-request)
+- [Application Summary](#application-summary)
 - [User Story](#user-story)
 - [Acceptance Criteria](#acceptance-criteria)
 - [Mockup](#mockup)
@@ -16,11 +16,11 @@ UW Code Bootcamp HW 6
 
 ## Developer Comment
 
-Hello everyone, and welcome back to my Repo! My name is Abdulhakeem Dahir and I am an aspiring Software Developer. This week I have been tasked to make a Weather Dashboard Application. We had to use multiple API requests and drill down to get the necessary information that we wanted. It was pretty difficult, and though I got it done, I'm hoping to increae my understanding of WHY it works more. Any feedback is welcome! Thank you!
+Hello everyone, and welcome back to my Repo! My name is Abdulhakeem Dahir and I am an aspiring Software Developer. This week I have been tasked to make a Weather Dashboard Application. We had to use multiple API requests and drill down to get the necessary information that we wanted. It was pretty difficult, and though I got it done, I'm hoping to increase my understanding of WHY it works more. Any feedback is welcome! Thank you!
 
-## Employer Request
+## Application Summary
 
-An employee wants an application that will allow them to plan their work day accordingly. The user wants to be able to manually add their own events and to save them. Below is their User Story:
+A user who travels would like an application that would enable them to see the weather before they travel:
 
 ### User Story
 

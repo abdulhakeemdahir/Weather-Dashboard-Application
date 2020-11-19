@@ -20,7 +20,7 @@ var searchedCityContainer = $("#list-group");
 var savedCitiesJSON = localStorage.getItem("cities");
 var savedCities = savedCitiesJSON ? JSON.parse(savedCitiesJSON): [];
 if (savedCities.length){
-handleAPI(savedCities[0]);
+handleAPI(savedCities[savedCities.length -1]);
 }
 for (var i = 0; i < savedCities.length; i++){
     searchedButton(savedCities[i]);
@@ -112,7 +112,6 @@ function handleAPI(city){
         var iconCode = response.weather[0].icon;
         var iconURL = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
         var weatherIcon = icon.attr("src", iconURL);
-        console.log(response);
         cityDate.text( response.name + ", " + todaysDate);
         temp.text( "Temperature: " + response.main.temp + " F");
         humidity.text( "Humidity: " + response.main.humidity + "%");
