@@ -2,6 +2,7 @@
 // Setting up moment
 var today = moment();
 var todaysDate = today.format("dddd, MMM DD");
+
 // Main Weather Section
 
 var contentContainer = $("#content2-container");
@@ -86,14 +87,13 @@ function searchHandler(city){
     localStorage.setItem("cities", JSON.stringify(savedCities));
     searchedButton(city);
 }
-
+// Append search buttons
 function searchedButton (city){
     var searchedCity = $('<button class="list-group-item"></button>');
     searchedCityContainer.append(searchedCity);
     searchedCity.text(city);
     searchedCity.data("city", city);
 }
-// Get Searched Items
 
 //Setting up API handler
 
@@ -128,6 +128,7 @@ function handleAPI(city){
 });
 }
 
+// Submit Search History Buttons
  searchedCityContainer.on("click", ".list-group-item", function (event){
      event.preventDefault();
     handleAPI($(this).data("city"));
