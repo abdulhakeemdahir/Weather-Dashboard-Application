@@ -2,6 +2,7 @@
 // Setting up variables
 
 // Main Weather Section
+
 var contentContainer = $("#content2-container");
 var submitButton = $("#submit");
 var cityDate = $("#city-date");
@@ -29,10 +30,10 @@ function uvIndexHandler (lon, lat){
             //5 Day Foercast Section
             var content2 = $('<div id="content2" class="mr-1">');
             var fiveDayContainer = $('<div id="fiveDayWeather" class="card p-2 bg-primary text-light col-sm row">');
-            var fiveCityDate = $('<p id="five-city-date"">');
+            var fiveCityDate = $('<p id="five-city-date">');
             var fiveCityIcon = $('<img id="icon2" src="" class="col-9"></img>');
-            var fiveCityTemp = $('<p id="five-city-temp"">');
-            var fiveCityHumidity = $('<p id="five-city-humidity"">');
+            var fiveCityTemp = $('<p id="five-city-temp">');
+            var fiveCityHumidity = $('<p id="five-city-humidity">');
 
             // Append 5 Day Section
             contentContainer.append(content2);
@@ -51,11 +52,25 @@ function uvIndexHandler (lon, lat){
         }
     });
 }
+// Append List of Searches
+
+function searchHandler(city){
+    var inputCity = city;
+    console.log(inputCity);
+    var searchedCityContainer = $("#list-group");
+    var searchedCity = $('<button id="list-item" class="list-group-item"></button>');
+    searchedCityContainer.append(searchedCity);
+    searchedCity.text(city);
+
+
+    var savedCity = 0; 
+}
 
 //Setting up API handler
 
 function handleAPI(){
     var city = $("#input").val().trim();
+    searchHandler(city);
     // Setting up url and api key
     var APIKey = "f4299bef35c7fb3410eeb230e66758d1";
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
@@ -85,14 +100,8 @@ function handleAPI(){
 });
 }
 
-// Append List of Searches
 
-// Get Current Weather Data and Long Lat
-
-// Get One API Data for UV Index
-
-// Get 5 Day Forcast Data
-
+// Submit Event 
 submitButton.on("click", function (event) {
     event.preventDefault();
     handleAPI();
