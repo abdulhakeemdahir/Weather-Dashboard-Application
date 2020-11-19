@@ -18,7 +18,9 @@ var icon = $("#icon");
 var searchedCityContainer = $("#list-group");
 var savedCitiesJSON = localStorage.getItem("cities");
 var savedCities = savedCitiesJSON ? JSON.parse(savedCitiesJSON): [];
-
+if (savedCities.length){
+handleAPI(savedCities[0]);
+}
 for (var i = 0; i < savedCities.length; i++){
     searchedButton(savedCities[i]);
 }
@@ -95,10 +97,8 @@ function searchedButton (city){
 
 //Setting up API handler
 
-function handleAPI(){
+function handleAPI(city){
     // Get User Input
-    var city = $("#input").val().trim();
-    searchHandler(city);
     
     // Setting up url and api key
     var APIKey = "f4299bef35c7fb3410eeb230e66758d1";
@@ -130,12 +130,14 @@ function handleAPI(){
 
  searchedCityContainer.on("click", ".list-group-item", function (event){
      event.preventDefault();
-    $(this).data("city");
+    handleAPI($(this).data("city"));
  })
 
 
 // Submit Event 
 submitButton.on("click", function (event) {
     event.preventDefault();
-    handleAPI();
+    var city = $("#input").val().trim();
+    searchHandler(city);
+    handleAPI(city);
   });
