@@ -1,6 +1,7 @@
 'use strict';
-// Setting up variables
-
+// Setting up moment
+var today = moment();
+var todaysDate = today.format("dddd, MMM DD, YYYYY");
 // Main Weather Section
 
 var contentContainer = $("#content2-container");
@@ -26,7 +27,7 @@ function uvIndexHandler (lon, lat){
         uvIndex.text( "UV-Index: " + response2.current.uvi);
         //Empty Container before each submit
         contentContainer.empty();
-        for (var i = 0; i < 5; i++){
+        for (var i = 1; i < 6; i++){
             //5 Day Foercast Section
             var fiveDayContainer = $('<div id="fiveDayWeather" class="card p-2 bg-primary text-light col-sm row m-1">');
             var fiveCityDate = $('<p id="five-city-date">');
@@ -38,8 +39,13 @@ function uvIndexHandler (lon, lat){
             contentContainer.append(fiveDayContainer);
             fiveDayContainer.append(fiveCityDate, fiveCityIcon, fiveCityTemp, fiveCityHumidity);
             
+            // Setting up Date
+
+            var newDate = moment().add(i, 'days');
+            var nextDate = newDate.format("dddd, MMM DD, YYYYY");
+
             // Setting up Responses
-            fiveCityDate.text("Date: " + response2.daily[i].dt);
+            fiveCityDate.text("Date: " + nextDate);
             fiveCityTemp.text("Temp: " + response2.daily[i].temp.day + " F");
             fiveCityHumidity.text("Humidity: " + response2.daily[i].humidity + "%");
 
@@ -85,7 +91,7 @@ function handleAPI(){
         var iconURL = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
         var weatherIcon = icon.attr("src", iconURL);
         console.log(response);
-        cityDate.text( response.name + " " + response.date);
+        cityDate.text( response.name + " " + todaysDate);
         temp.text( "Temperature: " + response.main.temp + " F");
         humidity.text( "Humidity: " + response.main.humidity + "%");
         windSpeed.text( "Wind Speed: " + response.wind.speed + " MPH");
