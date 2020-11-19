@@ -56,14 +56,13 @@ function uvIndexHandler (lon, lat){
 
 function searchHandler(city){
     var inputCity = city;
+    var savedCity = localStorage.setItem("cities", inputCity);
     console.log(inputCity);
     var searchedCityContainer = $("#list-group");
     var searchedCity = $('<button id="list-item" class="list-group-item"></button>');
     searchedCityContainer.append(searchedCity);
+    var getCity = localStorage.getItem("cities", "inputCity");
     searchedCity.text(city);
-
-
-    var savedCity = 0; 
 }
 
 //Setting up API handler
