@@ -26,7 +26,7 @@ function uvIndexHandler (lon, lat){
     }).then(function(response2){
         var uvIndexNumber = response2.current.uvi;
         uvIndex.text( "UV-Index: " + uvIndexNumber);
-        if (uvIndexNumber <= 2){
+        if (uvIndexNumber <= 2 || uvIndex <= 0){
             $(uvIndex).addClass("good");
         }
         else if (uvIndexNumber <= 6){
@@ -66,6 +66,7 @@ function uvIndexHandler (lon, lat){
         }
     });
 }
+
 // Append List of Searches
 
 function searchHandler(city){

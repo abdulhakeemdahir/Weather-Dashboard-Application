@@ -2,16 +2,19 @@
   background-color: green;
   color: white;
   padding: 5px;
+  border-radius: 3px;
 }
 
 .moderate {
   background-color: goldenrod;
   color: white;
   padding: 5px;
+  border-radius: 3px;
 }
 
 .severe {
   background-color: red;
   color: white;
   padding: 5px;
+  border-radius: 3px;
 }
